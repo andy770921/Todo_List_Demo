@@ -1,4 +1,9 @@
 import gql from 'graphql-tag'
+import { Task } from '../apollo/type-defs'
+
+export interface TaskListResponse {
+  tasks: Task[]
+}
 
 export const TASK_LIST_QUERY = gql`
   {
