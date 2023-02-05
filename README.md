@@ -58,12 +58,12 @@ https://todo-list-demo-rho.vercel.app/
 │
 ├── pages                      # Entry points for each pages
 │    ├── api
-│    │    └── graphql.ts       # offers '/api/graphql' API endpoint
+│    │    └── graphql.ts       # '/api/graphql' API endpoint
 │    │
 │    ├── _app.tsx              # general page settings before entering specific route
-│    └── index.tsx             # Main Todo Page
+│    └── index.tsx             # main Todo Page
 │
-├── .gitignore                 # Exclude files from Git version control
+├── .gitignore                 # files excluded from Git version control
 ├── .eslintrc.json             # ESLint settings
 ├── .prettierrc                # prettier settings
 ├── README.md                  # README
