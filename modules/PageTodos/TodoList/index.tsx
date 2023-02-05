@@ -10,7 +10,7 @@ import Todo from './Todo'
 
 const TodoList: FC<Pick<TaskListResponse, 'tasks'>> = ({ tasks }) => {
   return (
-    <List sx={{ marginTop: '20px', maxHeight: '60vh', overflow: 'auto' }}>
+    <List sx={{ maxHeight: '60vh', overflow: 'auto' }}>
       {tasks?.length ? (
         tasks.map(({ id, name }, idx) => (
           <Fragment key={id}>

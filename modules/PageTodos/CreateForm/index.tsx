@@ -45,7 +45,7 @@ const CreateForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Stack direction="row" spacing={2} mt={2}>
+      <Stack direction="row" spacing={2} mt={2} mb={1}>
         <Controller
           name="name"
           control={control}
