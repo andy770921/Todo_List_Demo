@@ -11,11 +11,13 @@ export async function getStaticProps() {
 
   await apolloClient.query({
     query: TASK_LIST_QUERY,
+    fetchPolicy: 'no-cache',
+    // Ref: https://www.apollographql.com/docs/react/data/queries/#supported-fetch-policies
   })
 
   return {
     props: {
-      initialApolloState: null,
+      initialApolloState: apolloClient.cache.extract(),
     },
   }
 }
