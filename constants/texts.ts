@@ -10,9 +10,9 @@ export const TEXT = {
 
   // API
   CREATE_TASK_SUCCESS: 'create task success:',
-  CREATE_TASK_FAIL: 'create task fail',
+  CREATE_TASK_FAIL: 'create task fail:',
   UPDATE_TASK_SUCCESS: 'update task success:',
-  UPDATE_TASK_FAIL: 'update task fail',
+  UPDATE_TASK_FAIL: 'update task fail:',
   DELETE_TASK_SUCCESS: 'delete task success',
-  DELETE_TASK_FAIL: 'delete task fail',
+  DELETE_TASK_FAIL: 'delete task fail:',
 }

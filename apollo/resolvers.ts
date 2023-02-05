@@ -12,36 +12,38 @@ export const resolvers = {
     createTask: async (_, { name: createdName }: Pick<Task, 'name'>): Promise<Task> => {
       const tasks = data
       const lastId = tasks.length ? tasks[tasks.length - 1].id : 0
-      if (!tasks.some(({ name }) => name === createdName)) {
-        const newTask = {
-          id: lastId + 1,
-          name: createdName,
-        }
-        data.push(newTask)
-        return newTask
-      } else {
-        throw new Error('Task with same name existed')
+      if (tasks.some(({ name }) => name === createdName)) {
+        throw new Error('same name existed')
       }
+      const newTask = {
+        id: lastId + 1,
+        name: createdName,
+      }
+      data.push(newTask)
+      return newTask
     },
     updateTask: async (_, { id: updatedId, name: updatedName }: Task): Promise<Task> => {
       const tasks = data
       const task = tasks.find(({ id }) => id === Number(updatedId))
-      if (typeof task !== 'undefined') {
-        task.name = updatedName
-        return task
-      } else {
+      if (typeof task === 'undefined') {
         throw new Error('ID not existed')
       }
+
+      const hasSameName = tasks.some(({ name }) => name === updatedName)
+      if (hasSameName) {
+        throw new Error('same name existed')
+      }
+      task.name = updatedName
+      return task
     },
     deleteTask: async (_, { id: deletedId }: Pick<Task, 'id'>): Promise<Task> => {
       const tasks = data
       const deleteIndex = tasks.findIndex(({ id }) => id === Number(deletedId))
-      if (typeof deleteIndex !== 'undefined') {
-        const removedTasks = data.splice(deleteIndex, 1)
-        return removedTasks[0]
-      } else {
+      if (typeof deleteIndex === 'undefined') {
         throw new Error('ID not existed')
       }
+      const removedTasks = data.splice(deleteIndex, 1)
+      return removedTasks[0]
     },
   },
 }

@@ -25,8 +25,11 @@ const CreateForm = () => {
   })
 
   const [createTask, { loading }] = useMutation(CREATE_TASK_MUTATION, {
-    onError: () => {
-      NiceModal.show(Snackbar, { severity: 'error', message: TEXT.CREATE_TASK_FAIL })
+    onError: (err) => {
+      NiceModal.show(Snackbar, {
+        severity: 'error',
+        message: `${TEXT.CREATE_TASK_FAIL}: ${err.message}`,
+      })
     },
     onCompleted: (data) => {
       NiceModal.show(Snackbar, { message: `${TEXT.CREATE_TASK_SUCCESS} ${data.createTask.name}` })

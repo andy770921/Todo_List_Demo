@@ -39,8 +39,11 @@ const Todo: FC<Props> = ({ id, order, name }) => {
   })
 
   const [updateTask, { loading: isUpdateLoading }] = useMutation(UPDATE_TASK_MUTATION, {
-    onError: () => {
-      NiceModal.show(Snackbar, { severity: 'error', message: TEXT.UPDATE_TASK_FAIL })
+    onError: (err) => {
+      NiceModal.show(Snackbar, {
+        severity: 'error',
+        message: `${TEXT.UPDATE_TASK_FAIL} ${err.message}`,
+      })
     },
     onCompleted: (data) => {
       NiceModal.show(Snackbar, { message: `${TEXT.UPDATE_TASK_SUCCESS} ${data.updateTask.name}` })
@@ -50,8 +53,11 @@ const Todo: FC<Props> = ({ id, order, name }) => {
   })
 
   const [deleteTask, { loading: isDeleteLoading }] = useMutation(DELETE_TASK_MUTATION, {
-    onError: () => {
-      NiceModal.show(Snackbar, { severity: 'error', message: TEXT.DELETE_TASK_FAIL })
+    onError: (err) => {
+      NiceModal.show(Snackbar, {
+        severity: 'error',
+        message: `${TEXT.DELETE_TASK_FAIL} ${err.message}`,
+      })
     },
     onCompleted: () => {
       NiceModal.show(Snackbar, { message: `${TEXT.DELETE_TASK_SUCCESS}` })
