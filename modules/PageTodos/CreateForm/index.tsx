@@ -28,7 +28,7 @@ const CreateForm = () => {
     onError: (err) => {
       NiceModal.show(Snackbar, {
         severity: 'error',
-        message: `${TEXT.CREATE_TASK_FAIL}: ${err.message}`,
+        message: `${TEXT.CREATE_TASK_FAIL} ${err.message}`,
       })
     },
     onCompleted: (data) => {
