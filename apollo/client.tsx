@@ -22,6 +22,16 @@ function createApolloClient() {
     ssrMode: typeof window === 'undefined',
     link: createIsomorphLink(),
     cache: new InMemoryCache(),
+    defaultOptions: {
+      watchQuery: {
+        fetchPolicy: 'no-cache',
+        errorPolicy: 'ignore',
+      },
+      query: {
+        fetchPolicy: 'no-cache',
+        errorPolicy: 'all',
+      },
+    },
   })
 }
 
